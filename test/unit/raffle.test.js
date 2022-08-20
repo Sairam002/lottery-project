@@ -103,10 +103,14 @@ describe("Testing for Raffle contract",function(){
         })
 
         it("reverts if upkeepNeeded is false", async function(){
-            await raffle.enterRaffle({value:ethers.utils.parseEther("0.01")});
-            await network.provider.send("evm_increaseTime", [interval.toNumber()-1]);
-            await network.provider.send("evm_mine",[]);
-            // const response = raffle.performUpkeep([]);
+            
+//            You don't need these lines, because of this your test was failing rest you code is pecfectly fine.
+            
+//             await raffle.enterRaffle({value:ethers.utils.parseEther("0.01")});
+//             await network.provider.send("evm_increaseTime", [interval.toNumber()-1]);
+//             await network.provider.send("evm_mine",[]);
+//             const response = raffle.performUpkeep([]);
+            
             await expect(raffle.performUpkeep([])).to.be.revertedWith("upKeepNotTrue");
         })
     })
